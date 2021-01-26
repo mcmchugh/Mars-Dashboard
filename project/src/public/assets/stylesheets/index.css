@@ -1,0 +1,251 @@
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Gentium Basic', Arial, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+
+}
+
+h1 {
+  color: #590a0a;
+  font-family: 'Eczar', serif;
+  font-size: 30px;
+  font-weight: bold;
+  margin: 0;
+
+}
+
+p {
+  padding: 0.5rem 0;
+  margin: 0;
+
+}
+
+button {
+  background: none;
+  border: none;
+  display: flex;
+  cursor: pointer;
+  font-size: 2rem;
+  font-family: 'Eczar', serif;
+  font-weight: bold;
+  justify-content: space-between;
+  text-align: left;
+  text-decoration: none;
+  width: 100%;
+
+}
+
+main {
+  color: #590a0a;
+  flex: 1;
+  font-size: 24px;
+
+}
+
+section {
+  padding: 20px;
+
+}
+
+.button-wrapper {
+  font-size: 2rem;
+  font-family: 'Eczar', serif;
+  display: flex;
+  align-items: center;
+
+}
+
+.desktop {
+  display: none;
+
+}
+
+.info {
+  background: #ffffff;
+  padding: 20px;
+
+}
+
+.icon {
+  display: block;
+  margin: 0 1rem;
+
+}
+
+.Spirit div,
+.Spirit button {
+  background: #590a0a;
+  color: #bf8e84;
+
+}
+
+.Spirit {
+  background: #590a0a;
+
+}
+
+.Opportunity button {
+  background: #b76b5c;
+  color: #590a0a;
+
+}
+
+.Opportunity  {
+  background: #b76b5c;
+
+}
+.Curiosity button {
+  background: #bf8e84;
+  color: #590a0a;
+
+}
+
+.Curiosity  {
+  background: #bf8e84;
+
+}
+
+.mars-scape {
+  background-image: url("mars-landscape.jpg");
+  background-size: cover;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+
+}
+
+.mars-scape h1 {
+  color: #ffffff;
+  font-size: 50px;
+  position: absolute;
+  left: 25%;
+  top: 50%;
+  right:25%;
+
+}
+
+.rover-image {
+  width:100%;
+
+}
+
+.info h2 {
+  border-bottom: 8px solid #bf8e84;
+  width: 50%;
+
+}
+
+@media (min-width: 768px) {
+  .desktop {
+    display: block;
+
+  }
+  .mobile {
+    display:none;
+
+  }
+
+  button {
+    font-size: 2rem;
+    margin: 0 1rem;
+
+  }
+
+  .desktop-img {
+    background: #590a0a;
+
+  }
+
+  .desktop-img img{
+    display: block;
+    opacity: .4;
+    width: 100%;
+
+  }
+
+  .icon {
+    color: #bf8e84;
+    font-size: 72px;
+    left: 30%;
+    position: absolute;
+    z-index: 5;
+
+  }
+
+  .mars-scape h1 {
+    color: #ffffff;
+    font-size: 50px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 40%;
+
+  }
+
+  .desktop-header {
+    background: #330404;
+    display: flex;
+    justify-content: flex-end;
+
+  }
+
+  .desktop-content {
+    display: flex;
+    flex-wrap: nowrap;
+
+  }
+
+  .rover-info {
+    display:flex;
+
+  }
+
+  .img-section {
+    text-align: right;
+    width:55%;
+
+  }
+
+ .img-section .rover-image {
+   width:400px;
+
+ }
+
+  .info {
+    width:45%;
+
+  }
+
+  .desktop-content-border.curiosity {
+    border: 6px solid #bf8e84;
+
+  }
+
+  .desktop-content-border.opportunity {
+    border: 6px solid #b76b5c;
+
+  }
+
+  .desktop-content-border.spirit {
+    border: 6px solid #590a0a;
+
+  }
+  .desktop-img {
+    position: relative;
+  }
+
+  .desktop-rover {
+    color: #bf8e84;
+    cursor: pointer;
+    font-size: 57px;
+    font-weight: bold;
+    position: absolute;
+    text-transform: uppercase;
+    top: 25%;
+    left: 40%;
+    z-index: 5;
+
+  }
+}
