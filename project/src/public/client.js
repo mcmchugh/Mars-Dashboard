@@ -7,27 +7,30 @@ let roverInfo = Immutable.Map({
 });
 
 //use getData to grab data and grab array of photos
+//returns the getRandomNumber function which is passed an array of photo data
 const getData = (roverObject) => {
     if(typeof roverObject !== 'undefined') {
         const getRoverImg = roverObject.get('latestImg');
 
         if(typeof getRoverImg !== 'undefined') {
             const getImage = getRoverImg.latestImages.latest_photos;
-            //generate random number and use the newly generated number to access one entry in the returned data
-            const getLatestId = getImage.map(a => a.id);
-            //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-            //Doc last updated Jan 9, 2021, by MDN contributors - referenced on Jan 25,2021 by MM
-
-            if(typeof getImage !== 'undefined') {
-                const getRandomNumber = getLatestId.length;
-                const newNum = Math.floor(Math.random() * (getRandomNumber - 0) + 0);
-                const roverImgDataRow = getImage[newNum];
-                return roverImgDataRow;
-            }
+            return getRandomNumber(getImage);
         }
     }
 };
 
+//Example of high order function
+//generate random number and use the newly generated number to access one entry in the returned data
+const getRandomNumber = (getImage) => {
+    //generate random number and use the newly generated number to access one entry in the returned data
+    //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+    //Doc last updated Jan 9, 2021, by MDN contributors - referenced on Jan 25,2021 by MM
+    const getLatestId = getImage.map(a => a.id);
+    const getRandomNumber = getLatestId.length;
+    const newNum = Math.floor(Math.random() * (getRandomNumber - 0) + 0);
+    const roverImgDataRow = getImage[newNum];
+    return roverImgDataRow;
+}
 // add our markup to the page
 const root = document.getElementById('root')
 
@@ -187,7 +190,6 @@ const scrollToElement = () => {
     //Doc last updated Jan 9, 2021, by MDN contributors - referenced on Jan 25,2021 by MM
     //https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo
     //Doc last updated Jan 9, 2021, by MDN contributors - referenced on Jan 25,2021 by MM
-
     const getImg = document.querySelector('.desktop-img').clientHeight;
     const scrollTo = {
         top: getImg,
@@ -199,18 +201,21 @@ const scrollToElement = () => {
 //used when the user interacts with the app
 //called when the user clicks the rover button
 //grabs the text from the element clicked and is passed to the updateRoverNameFunction
+//example of a high order function
 const changeRover =  (e) => {
     const getRoverName = e.target.textContent;
     getRoverName.toLowerCase();
-    upDateRoverName(getRoverName, roverInfo);
-    return getRoverName;
+    const updateRoverData = upDateRoverName(getRoverName, roverInfo);
+    return updateRoverData();
 };
 
 //after click, update the rover object currentRover property and pass
 //that object  directly to the getMarsRoverImages function, which initiates the API call
 const upDateRoverName = (name,roverInfo) => {
     const roverUpdateCurrentRov = roverInfo.set('currentRover', name);
-    getLatestImages(roverUpdateCurrentRov);
+    return function () {
+        getLatestImages(roverUpdateCurrentRov);
+    }
 };
 
 //listening for load event because page should load before any JS is called
